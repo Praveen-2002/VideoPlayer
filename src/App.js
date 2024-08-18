@@ -3,8 +3,9 @@ import { useState } from 'react';
 import './App.css';
 import HomePage from './Components/HomePage';
 import NavBar from './Components/NavBar';
-import VideoCard from './Components/VideoCard';
 import PlayVideo from './Components/PlayVideo';
+import Login from './Components/Login';
+import Register from './Components/Register';
 
 function App() {
   var [data, setData] = useState(null);
@@ -17,6 +18,8 @@ function App() {
         </header>
         <div>
           <Routes>
+            <Route exact path="/user/register" element={<Register/>}/>
+            <Route exact path="/user/login" element={<Login/>} />
             <Route exact path="/" element={<HomePage data={data} />} />
             <Route exact path="home" element={<HomePage data={data}/>}/>
             <Route path="video/*" element={<PlayVideo data={data}/>} />

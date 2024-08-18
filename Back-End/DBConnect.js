@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("Connection String").then(()=>{
+mongoose.connect("mongodb://localhost:27017/VideoApp").then(()=>{
     console.log("Connected to DB successfully");
 }).catch((err)=>{
     console.log(err);

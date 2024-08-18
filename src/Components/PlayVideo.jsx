@@ -7,7 +7,7 @@ export default function PlayVideo(props) {
   var path = location.pathname.split("/");
   var id = path[path.length - 1];
   return (
-    <div className='VideoPlayer dark:text-white flex gap-4 m-10'>
+    <div className='VideoPlayer flex gap-4 m-10'>
       <div className='flex-grow'>
         <iframe className='border-2 border-white mb-10 w-3/5 sm:w-full' width="840" height="360"
           src={`https://www.youtube.com/embed/${id}?autoplay=1`}>

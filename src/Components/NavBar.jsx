@@ -33,11 +33,11 @@ function NavBar(props) {
         return res;
     }
     return (
-        <nav className="navbar dark:text-white h-8 mb-10">
+        <nav className="navbar h-8 mb-10">
             <div className="container mx-auto flex m-3 h-full">
-                <Link className="flex " id="App_Title" to='/'><strong>YouTube</strong></Link>
+                <Link className="flex " id="App_Title" to='/'><span>YouTube</span></Link>
                 <div className='flex m-auto w-1/2'>
-                <input type="text" placeholder='Search' onChange={setInput} className='rounded-full border-2 border-gray-500 dark:bg-black dark:text-white indent-3 w-full' />
+                <input type="text" placeholder='Search' onChange={setInput} className='rounded-full border-2 border-gray-500 indent-3 w-full' />
                 <button onClick={search}
                     className="flex space-x-3 items-center px-5 py-3 bg-indigo-500 hover:bg-indigo-800 rounded-full drop-shadow-md">
                     <svg className="fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="14" height="14"
@@ -49,7 +49,7 @@ function NavBar(props) {
                 </button>
                 </div>
                 <div className="flex m-1"> {/*Todo: Add User Icon*/}
-                    <strong className="user-name">{props.userName}</strong>
+                    <span className="user-name">{props.userName}</span>
                 </div>
             </div>
         </nav>

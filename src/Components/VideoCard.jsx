@@ -11,8 +11,8 @@ function VideoCard(props) {
             <div className="card" id={props.id.videoId}>
                 <img src={props.snippet.thumbnails.high.url} className="card-img-top rounded-md" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title dark:text-white"><strong>{props.snippet.title.slice(0,30)}</strong></h5>
-                    <p className="card-text dark:text-white">{props.snippet.description.slice(0,40)}</p>
+                    <h5 className="card-title"><strong>{props.snippet.title.slice(0,30)}</strong></h5>
+                    <p className="card-text">{props.snippet.description.slice(0,40)}</p>
                 </div>
             </div>
         </div>
