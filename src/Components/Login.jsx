@@ -5,7 +5,7 @@ export default function LoginPage(props)
     var [check,setCheck] = useState(null);
     useEffect(()=>{
         var serverData = async() =>{
-            var responce = await fetch(process.env.Server_Url);
+            var responce = await fetch(`${process.env.Server_Url}/user/login`);
             setCheck(await responce.text());
         }
         serverData();
