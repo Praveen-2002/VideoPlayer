@@ -13,14 +13,14 @@ router.post("/register",(req,res)=>{
     });
     
     user.save().then((savedRes)=>{
-        res.status(200).json({"msg":"Success"});
+        res.status(200).json({"msg":"Success", "status":200});
     }).catch((err)=>{
         try{
             err.errorResponse.code == 11000 ?
-                 res.status(400).json({"msg":"An User with this Email already exits."})
-                : res.status(500).json({"msg":"Sorry Unable to Register the user right now. Please visit us again after Some time."})
+                 res.status(400).json({"msg":"An User with this Email already exits.", "status":400})
+                : res.status(500).json({"msg":"Sorry Unable to Register the user right now. Please visit us again after Some time.","status":500})
         }catch(e){
-            res.status(400).json({"msg":err._message});
+            res.status(400).json({"msg":err._message, "status":400});
         }
     })
 });

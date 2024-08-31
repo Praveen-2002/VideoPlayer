@@ -1,15 +1,23 @@
 import React,{useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(props)
 {
+    var navigate = useNavigate();
+
     var [check,setCheck] = useState(null);
     useEffect(()=>{
         var serverData = async() =>{
-            var responce = await fetch(`${process.env.Server_Url}/user/login`);
+            var responce = await fetch("http://localhost:2000/");
             setCheck(await responce.text());
         }
         serverData();
     },[check])
+
+    function navigatToReg(e){
+        e.preventDefault();
+        navigate("/user/register");
+    }
     
     return (
         <div className="relative inline-flex items-center justify-center mt-10">
@@ -27,6 +35,9 @@ export default function LoginPage(props)
                             <input id="login_password" className="w-3/5 p-2 rounded-sm border-2 rounded-md mt-1" type="password"/>
                         </li> 
                     </ul>
+
+                    <p className='m-2'>If you are not registered <a className='text-blue-700' href="user/register" onClick={navigatToReg}>click here</a></p>
+
                     <button className="relative inline-flex items-center justify-center p-4 px-6 py-3 font-small text-indigo-600 ease-out border-2 border-purple-500 rounded-full shadow-md" type="submit">
                         <span className="relative">login</span>
                     </button>
