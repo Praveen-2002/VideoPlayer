@@ -1,9 +1,14 @@
-import React,{useEffect, useState} from 'react'
-import { Link } from 'react-router-dom';
+import React,{useEffect, useState, useContext} from 'react'
+import { useNavigate, Link } from 'react-router-dom';
+import { dataContext } from '../App';
 
 function NavBar(props) {
-    var [userInput,setUserInput] = useState("");
-    var [searched,setSearched] = useState(null);
+    let {data,setData} = useContext(dataContext);
+    const navigate = useNavigate();
+    let [userInput,setUserInput] = useState("");
+    let [searched,setSearched] = useState(null);
+    let [isValidUser,setIsValidUser] = useState(false);
+
     function setInput(e){
         setUserInput(e.target.value);
     }
@@ -13,11 +18,26 @@ function NavBar(props) {
 
     useEffect(() => {
         async function getData() {
-            var api_data = await fetchDataFormAPI();
-            props.setData(api_data.items);
+            let api_data = await fetchDataFormAPI();
+            setData(api_data.items);
         }
-        getData();
-    }, [searched])
+        async function VaidUser() {
+            let responce = await fetch("http://localhost:2000/user/isValidUser",{
+                method: "get",
+                credentials: 'include'
+            });
+            let res_json = await responce.json()
+            setIsValidUser(()=>{
+                return res_json.status === 201 ? true : false;
+            })
+            if(res_json.status != 201){
+                navigate("/user/login")
+            }else{
+                getData();
+            }
+        }
+        VaidUser();
+    }, [searched, isValidUser])
 
     async function fetchDataFormAPI() {
         const url = `https://${process.env.REACT_APP_YoutubeApi_domain}/search?q=${searched}&part=snippet%2Cid&regionCode=IN&maxResults=50&order=date`;
@@ -28,8 +48,8 @@ function NavBar(props) {
                 'x-rapidapi-host': process.env.REACT_APP_YoutubeApi_domain
             }
         };
-        var data = await fetch(url, options);
-        var res = await data.json();
+        let data = await fetch(url, options);
+        let res = await data.json();
         return res;
     }
     return (

@@ -1,5 +1,3 @@
-const { type } = require("@testing-library/user-event/dist/type");
-
 var mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
@@ -23,6 +21,9 @@ var userSchema = new mongoose.Schema({
     cratedAt : {
         type: Date,
         default: Date.now
+    },
+    test:{
+        type: String
     }
 }, {collection: "User"})
 

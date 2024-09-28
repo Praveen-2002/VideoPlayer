@@ -43,7 +43,6 @@ export default function SignUp() {
             });
             var resData = await storeUser_res.json();
             setResMsg(resData);
-            console.log(resData);
         }
         StoreUser();
     }, [user])
@@ -53,8 +52,8 @@ export default function SignUp() {
         <div className="relative inline-flex items-center justify-center mt-10">
             <div className="login_page container m-2 border-2">
                 {resMsg && resMsg.status === 200 &&
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Success</strong>
+                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <strong className="font-bold">Success</strong>
                     </div>
                 }
                 <h2 className="font-medium text-indigo-600 my-3">User Registration</h2>
@@ -83,9 +82,9 @@ export default function SignUp() {
                 </form>
                 
                 {resMsg && (resMsg.status === 400 || resMsg.status === 500) &&
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Try Again !</strong>
-                        <span class="block sm:inline">{resMsg.msg}</span>
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <strong className="font-bold">Try Again !</strong>
+                        <span className="block sm:inline">{resMsg.msg}</span>
                     </div>
                 }
                 
