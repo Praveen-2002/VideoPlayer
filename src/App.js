@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import PlayVideo from './Components/PlayVideo';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import Downloader from './Components/Downloader';
 
 export const dataContext = createContext();
 
@@ -22,11 +23,12 @@ function App() {
           </header>
           <div>
             <Routes>
-              <Route exact path="/user/register" element={<Register/>}/>
-              <Route exact path="/user/login" element={<Login setUserName={setUserName}/>}/>
+              <Route exact path="/user/register" element={<Register/>} />
+              <Route exact path="/user/login" element={<Login setUserName={setUserName}/>} />
               <Route exact path="/" element={<HomePage/>} />
-              <Route exact path="/home" element={<HomePage/>}/>
+              <Route exact path="/home" element={<HomePage/>} />
               <Route path="/video/*" element={<PlayVideo/>} />
+              <Route path="/downloader" element={<Downloader/>} />
             </Routes>
           </div>
         </div>

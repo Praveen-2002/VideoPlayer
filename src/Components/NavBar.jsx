@@ -37,7 +37,7 @@ function NavBar(props) {
             }
         }
         VaidUser();
-    }, [searched, isValidUser])
+    }, [searched, isValidUser,props.userName])
 
     async function fetchDataFormAPI() {
         const url = `https://${process.env.REACT_APP_YoutubeApi_domain}/search?q=${searched}&part=snippet%2Cid&regionCode=IN&maxResults=50&order=date`;

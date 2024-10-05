@@ -1,4 +1,5 @@
-var user = require("./UserRoute/User.js");
+let user = require("./UserRoute/User.js");
+let downloader = require("./Downloader/downloader.js");
 const connect = require("./DBConnect.js");
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -11,6 +12,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use("/user",user);
+app.use("/downloader",downloader)
 
 app.get("/",(req,res)=>{
     res.send("route working fine");
